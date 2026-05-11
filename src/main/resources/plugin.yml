@@ -2,7 +2,7 @@ name: ChatCooldown
 author: AhmHkn
 main: me.AhmHkn.ChatCooldown.Main
 description: Chat cooldown plugin.
-version: 2.1.1-paper2612
+version: 2.1.2-paper2612
 api-version: 26.1.2
 softdepend:
   - LunaChat
@@ -14,7 +14,7 @@ commands:
 permissions:
   chatcooldown.bypass:
     description: Bypass chat cooldown.
-    default: op
+    default: false
   chatcooldown.reload:
     description: Reload ChatCooldown config.
     default: op
