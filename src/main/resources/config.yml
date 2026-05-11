@@ -1,3 +1,12 @@
-Cooldown: 3 #2 = 1 second / 1 = 0.5 second
+# Cooldown duration in seconds.
+CooldownSeconds: 3.0
+
+BypassPermission: "chatcooldown.bypass"
 Prefix: "&9ChatCooldown &8&l» "
-Message: "&cCalm down!"
+Message: "&cCalm down! &7(%time%s)"
+
+LunaChat:
+  # Prefer LunaChat's own PreChat event when LunaChat is installed. This avoids
+  # double-processing native Paper chat events that LunaChat consumes internally.
+  Enabled: true
+  AlsoListenToNativeChat: false
