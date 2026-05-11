@@ -35,22 +35,16 @@ public final class Main extends JavaPlugin {
     }
 
     private void registerChatListeners() {
-        boolean lunaChatHooked = false;
-        if (getConfig().getBoolean("LunaChat.Enabled", true)) {
-            lunaChatHooked = LunaChatHook.register(this, cooldownService);
-        }
-
-        if (lunaChatHooked && !getConfig().getBoolean("LunaChat.AlsoListenToNativeChat", false)) {
-            getLogger().info("Using LunaChat hook for chat cooldowns.");
-            return;
-        }
-
         if (isPaperChatEventAvailable()) {
             Bukkit.getPluginManager().registerEvents(new PaperChatListener(cooldownService), this);
             getLogger().info("Using Paper AsyncChatEvent for chat cooldowns.");
         } else {
             Bukkit.getPluginManager().registerEvents(new LegacyChatListener(cooldownService), this);
             getLogger().info("Using Bukkit AsyncPlayerChatEvent for chat cooldowns.");
+        }
+
+        if (getConfig().getBoolean("LunaChat.HookPreChat", false) && LunaChatHook.register(this, cooldownService)) {
+            getLogger().info("Using LunaChat PreChat hook for additional chat cooldown coverage.");
         }
     }
 

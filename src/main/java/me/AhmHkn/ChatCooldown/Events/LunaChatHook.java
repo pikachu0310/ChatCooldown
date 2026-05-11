@@ -52,6 +52,10 @@ public final class LunaChatHook {
 
         @Override
         public void execute(Listener listener, Event event) throws EventException {
+            if (!PRE_CHAT_EVENT.equals(event.getClass().getName())) {
+                return;
+            }
+
             if (!(event instanceof Cancellable cancellable) || cancellable.isCancelled()) {
                 return;
             }

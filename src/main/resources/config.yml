@@ -6,7 +6,7 @@ Prefix: "&9ChatCooldown &8&l» "
 Message: "&cCalm down! &7(%time%s)"
 
 LunaChat:
-  # Prefer LunaChat's own PreChat event when LunaChat is installed. This avoids
-  # double-processing native Paper chat events that LunaChat consumes internally.
-  Enabled: true
-  AlsoListenToNativeChat: false
+  # Native Paper/Bukkit chat events are used by default because LunaChat consumes
+  # the same chat flow after those events. Enable this only if you need to cover
+  # LunaChat-specific entrypoints that do not emit native chat events.
+  HookPreChat: false
